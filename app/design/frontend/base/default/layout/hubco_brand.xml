@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<layout>
+
+    <hubco_brand_index_index>
+        <reference name="content">
+            <block type="hubco_brand/list" name="hubco.brand.list" template="hubco_brand/list.phtml" />
+        </reference>
+    </hubco_brand_index_index>
+
+    <hubco_brand_index_view>
+        <reference name="content">
+            <block type="hubco_brand/view" name="hubco.brand.view" template="hubco_brand/view.phtml" />
+        </reference>
+    </hubco_brand_index_view>
+
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="hubco_brand/catalog_product_view_link" name="hubco.brand.view.other.link" as="other" template="hubco_brand/catalog/product/view/link.phtml"/>
+        </reference>
+    </catalog_product_view>
+
+</layout>

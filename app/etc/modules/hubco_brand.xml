@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <HubCo_Brand>
+            <active>true</active>
+            <codePool>local</codePool>
+        </HubCo_Brand>
+    </modules>
+</config>
