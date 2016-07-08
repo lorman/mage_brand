@@ -210,4 +210,32 @@ class HubCo_Brand_Model_Brand
       }
       return $this;
     }
+
+    public function getAvailableBrands($multi = false)
+    {
+      $brands = array();
+      $allBrandsCollection = Mage::getModel('hubco_brand/brand')
+      ->getCollection()
+      ->addFieldToSelect('name');
+      $allBrands = $allBrandsCollection->load()->toArray();
+      foreach ($allBrands['items'] as $brandId => $brand)
+      {
+        if (!isset($brand['name'])) {
+          continue;
+        }
+        if ($multi)
+        {
+          $brands[$brandId] = array(
+              'value' => $brandId,
+              'label' => $brand['name']
+          );
+        }
+        else
+        {
+          $brands[$brandId] = $brand['name'];
+        }
+      }
+
+      return $brands;
+    }
 }
