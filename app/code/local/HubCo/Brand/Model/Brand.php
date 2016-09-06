@@ -238,4 +238,35 @@ class HubCo_Brand_Model_Brand
 
       return $brands;
     }
+
+    public function clean($brand) {
+      /**
+       * Find a brand by iether name or AKA and return the brand name, return null if not found
+       */
+      $brandCollection = Mage::getModel('hubco_brand/brand')->getCollection();
+      $brandCollection->addFieldToFilter(
+          array('name','AKA'),array(array('eq'=>$brand),array('regexp'=>'(,|^)'.$brand.'(,|$)')));
+      //echo $brandCollection->getSelect()->__toString();
+      $brands = $brandCollection->getData();
+      if (count($brands) == 1) {
+        return $brands[0]['name'];
+      }
+      else {
+        return null;
+      }
+    }
+
+    public function getBrandID($name) {
+      $brandCollection = Mage::getModel('hubco_brand/brand')->getCollection();
+      $brandCollection->addFieldToFilter(
+          'name',$name);
+      //echo $brandCollection->getSelect()->__toString();
+      $brands = $brandCollection->getData();
+      if (count($brands) == 1) {
+        return $brands[0]['entity_id'];
+      }
+      else {
+        return null;
+      }
+    }
 }
