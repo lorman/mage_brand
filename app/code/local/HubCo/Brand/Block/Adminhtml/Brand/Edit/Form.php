@@ -52,7 +52,7 @@ class HubCo_Brand_Block_Adminhtml_Brand_Edit_Form
             'description' => array(
                 'label' => $this->__('Description'),
                 'input' => 'textarea',
-                'required' => true,
+                'required' => false,
             ),
             'visibility' => array(
                 'label' => $this->__('Visibility'),
@@ -75,8 +75,7 @@ class HubCo_Brand_Block_Adminhtml_Brand_Edit_Form
             'max_discount' => array(
                 'label' => $this->__('Maximum Discount'),
                 'input' => 'text',
-                'required' => true,
-                'value' => 100,
+                'required' => false
             ),
             'amazon' => array(
                 'label' => $this->__('Amazon'),

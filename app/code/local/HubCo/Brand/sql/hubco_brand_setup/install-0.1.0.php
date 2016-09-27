@@ -95,7 +95,9 @@ $table->addColumn(
     'max_discount',
     Varien_Db_Ddl_Table::TYPE_INTEGER, null,
     array(
+        'nullable'  => false,
         'unsigned'  => true,
+        'default' => 100,
     ),
     'Max Discount'
 );
