@@ -59,6 +59,12 @@ class HubCo_Brand_Block_Adminhtml_Brand_Grid
             'index' => 'name',
         ));
 
+        $this->addColumn('AKA', array(
+            'header' => $this->_getHelper()->__('AKA'),
+            'type' => 'text',
+            'index' => 'AKA',
+        ));
+
         $this->addColumn('url_key', array(
             'header' => $this->_getHelper()->__('Url Key'),
             'type' => 'text',
