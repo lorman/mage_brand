@@ -216,6 +216,7 @@ class HubCo_Brand_Model_Brand
       $brands = array();
       $allBrandsCollection = Mage::getModel('hubco_brand/brand')
       ->getCollection()
+      ->addFieldToSelect('entity_id')
       ->addFieldToSelect('name');
       $allBrands = $allBrandsCollection->load()->toArray();
       foreach ($allBrands['items'] as $brandId => $brand)
@@ -225,14 +226,14 @@ class HubCo_Brand_Model_Brand
         }
         if ($multi)
         {
-          $brands[$brandId] = array(
-              'value' => $brandId,
+          $brands[$brand['entity_id']] = array(
+              'value' => $brand['entity_id'],
               'label' => $brand['name']
           );
         }
         else
         {
-          $brands[$brandId] = $brand['name'];
+          $brands[$brand['entity_id']] = $brand['name'];
         }
       }
 
