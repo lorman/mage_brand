@@ -59,12 +59,14 @@ class HubCo_Brand_Block_Adminhtml_Brand_Edit_Form
                 'input' => 'select',
                 'required' => true,
                 'options' => $brandSingleton->getAvailableVisibilies(),
+                'default' => $brandSingleton::VISIBILITY_DIRECTORY,
             ),
             'status' => array(
                 'label' => $this->__('Status'),
                 'input' => 'select',
                 'required' => true,
                 'options' => $brandSingleton->getAvailableStatus(),
+                'default' => $brandSingleton::STATUS_ENABLED,
             ),
             'map' => array(
                 'label' => $this->__('MAP'),
@@ -75,57 +77,64 @@ class HubCo_Brand_Block_Adminhtml_Brand_Edit_Form
             'max_discount' => array(
                 'label' => $this->__('Maximum Discount'),
                 'input' => 'text',
-                'required' => false
+                'required' => false,
+                'default' => 100
             ),
             'amazon' => array(
                 'label' => $this->__('Amazon'),
                 'input' => 'select',
                 'required' => true,
                 'options' => $brandSingleton->getAvailablePermissions(),
+                'default' => $brandSingleton::PERMISSION_ALLOWED,
             ),
             'jet' => array(
                 'label' => $this->__('Jet'),
                 'input' => 'select',
                 'required' => true,
                 'options' => $brandSingleton->getAvailablePermissions(),
+                'default' => $brandSingleton::PERMISSION_ALLOWED,
             ),
             'ebay' => array(
                 'label' => $this->__('Ebay'),
                 'input' => 'select',
                 'required' => true,
                 'options' => $brandSingleton->getAvailablePermissions(),
+                'default' => $brandSingleton::PERMISSION_ALLOWED,
             ),
             'newegg' => array(
                 'label' => $this->__('NewEgg'),
                 'input' => 'select',
                 'required' => true,
                 'options' => $brandSingleton->getAvailablePermissions(),
+                'default' => $brandSingleton::PERMISSION_ALLOWED,
             ),
             'rakuten' => array(
                 'label' => $this->__('Rakuten'),
                 'input' => 'select',
                 'required' => true,
                 'options' => $brandSingleton->getAvailablePermissions(),
+                'default' => $brandSingleton::PERMISSION_ALLOWED,
             ),
             'sears' => array(
                 'label' => $this->__('Sears'),
                 'input' => 'select',
                 'required' => true,
                 'options' => $brandSingleton->getAvailablePermissions(),
+                'default' => $brandSingleton::PERMISSION_ALLOWED,
             ),
             'product_types' => array(
                 'name' => 'product_types[]',
                 'label' => $this->__('Product Types'),
                 'input' => 'multiselect',
                 'required' => false,
-                'values' => $brandSingleton->getAvailableProductTypes(true),
+                'default' => $brandSingleton->getAvailableProductTypes(true),
             ),
             'categories' => array(
                 'name' => 'categories[]',
                 'label' => $this->__('Applicable Categories'),
                 'input' => 'multiselect',
                 'required' => false,
-                'values'=> $brandSingleton->getAvailableCategories(true),
+                'default'=> $brandSingleton->getAvailableCategories(true),
             ),
             /**
              * Note: we have not included created_at or updated_at.
@@ -171,6 +180,9 @@ class HubCo_Brand_Block_Adminhtml_Brand_Edit_Form
             // If no new value exists, use the existing brand data.
             if (!array_key_exists('value', $_data)) {
                 $_data['value'] = $this->_getBrand()->getData($name);
+            }
+            if (!isset($_data['value']) && isset($_data['default'])) {
+              $_data['value'] = $_data['default'];
             }
 
             // Finally, call vanilla functionality to add field.
