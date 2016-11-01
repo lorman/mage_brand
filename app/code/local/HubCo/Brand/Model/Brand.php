@@ -40,12 +40,12 @@ class HubCo_Brand_Model_Brand
     public function getAvailableVisibilies()
     {
         return array(
-            self::VISIBILITY_HIDDEN
-                => Mage::helper('hubco_brand')
-                       ->__('Hidden'),
             self::VISIBILITY_DIRECTORY
                 => Mage::helper('hubco_brand')
                        ->__('Visible in Directory'),
+            self::VISIBILITY_HIDDEN
+                => Mage::helper('hubco_brand')
+                       ->__('Hidden'),
         );
     }
 
