@@ -43,13 +43,13 @@ class HubCo_Brand_Block_Adminhtml_Brand_Grid
 
         $this->addColumn('created_at', array(
             'header' => $this->_getHelper()->__('Created'),
-            'type' => 'datetime',
+            'type' => 'date',
             'index' => 'created_at',
         ));
 
         $this->addColumn('updated_at', array(
             'header' => $this->_getHelper()->__('Updated'),
-            'type' => 'datetime',
+            'type' => 'date',
             'index' => 'updated_at',
         ));
 
@@ -74,6 +74,12 @@ class HubCo_Brand_Block_Adminhtml_Brand_Grid
         $brandSingleton = Mage::getSingleton(
             'hubco_brand/brand'
         );
+
+        $this->addColumn('aca_brand_code', array(
+            'header' => $this->_getHelper()->__('Brand Code'),
+            'type' => 'text',
+            'index' => 'aca_brand_code',
+        ));
 
         $this->addColumn('status', array(
             'header' => $this->_getHelper()->__('Status'),

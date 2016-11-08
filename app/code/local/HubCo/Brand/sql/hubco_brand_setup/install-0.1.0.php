@@ -193,6 +193,15 @@ $table->addColumn(
     ),
     'Logo Path'
 );
+$table->addColumn(
+    'aca_brand_code',
+    Varien_Db_Ddl_Table::TYPE_VARCHAR,
+    5,
+    array(
+        'nullable'  => true,
+    ),
+    'Brand Code'
+);
 
 /**
  * A couple of important lines that are often missed.
