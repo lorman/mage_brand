@@ -57,7 +57,7 @@ class HubCo_Brand_Block_Adminhtml_Brand_Edit_Form
             'aca_brand_code' => array(
                 'label' => $this->__('ACA Brand Code'),
                 'input' => 'text',
-                'required' => true,
+                'required' => false,
             ),
             'visibility' => array(
                 'label' => $this->__('Visibility'),

@@ -247,7 +247,7 @@ class HubCo_Brand_Model_Brand
       $brandCollection = Mage::getModel('hubco_brand/brand')->getCollection();
       $brandCollection->addFieldToFilter(
           array('name','AKA'),array(array('eq'=>$brand),array('regexp'=>'(,|^)'.$brand.'(,|$)')));
-      //echo $brandCollection->getSelect()->__toString();
+      //echo $brandCollection->getSelect()->__toString(); exit;
       $brands = $brandCollection->getData();
       if (count($brands) == 1) {
         return $brands[0]['name'];
