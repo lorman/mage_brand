@@ -244,9 +244,11 @@ class HubCo_Brand_Model_Brand
       /**
        * Find a brand by iether name or AKA and return the brand name, return null if not found
        */
+      $brand = str_replace('  ',' ', $brand);
+      $brandRegEx = str_replace(array('(',')'), array('\\(','\\)'), $brand);
       $brandCollection = Mage::getModel('hubco_brand/brand')->getCollection();
       $brandCollection->addFieldToFilter(
-          array('name','AKA'),array(array('eq'=>$brand),array('regexp'=>'(,|^)'.$brand.'(,|$)')));
+          array('name','AKA'),array(array('eq'=>$brand),array('regexp'=>'(,|^)'.$brandRegEx.'(,|$)')));
       //echo $brandCollection->getSelect()->__toString(); exit;
       $brands = $brandCollection->getData();
       if (count($brands) == 1) {
