@@ -53,9 +53,7 @@ class HubCo_Brand_Adminhtml_BrandController
                     $postData[$key] = implode(',',$value);
                   }
                 }
-                echo "Array Broken";
                 $brand->addData($postData);
-                echo "Data Added";
                 $brand->save();
 
                 $this->_getSession()->addSuccess(

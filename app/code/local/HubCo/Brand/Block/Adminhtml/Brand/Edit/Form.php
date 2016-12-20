@@ -85,6 +85,13 @@ class HubCo_Brand_Block_Adminhtml_Brand_Edit_Form
                 'required' => false,
                 'default' => 100
             ),
+            'google' => array(
+                'label' => $this->__('Google'),
+                'input' => 'select',
+                'required' => true,
+                'options' => $brandSingleton->getAvailablePermissions(),
+                'default' => $brandSingleton::PERMISSION_ALLOWED,
+            ),
             'amazon' => array(
                 'label' => $this->__('Amazon'),
                 'input' => 'select',

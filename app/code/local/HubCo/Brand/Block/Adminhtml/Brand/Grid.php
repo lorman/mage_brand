@@ -102,6 +102,13 @@ class HubCo_Brand_Block_Adminhtml_Brand_Grid
             'options' => $brandSingleton->getAvailableMAP()
         ));
 
+        $this->addColumn('google', array(
+            'header' => $this->_getHelper()->__('Google'),
+            'index' => 'google',
+            'type'    => 'options',
+            'options' =>  $brandSingleton->getAvailablePermissions()
+        ));
+
         $this->addColumn('amazon', array(
             'header' => $this->_getHelper()->__('Amazon'),
             'index' => 'amazon',
