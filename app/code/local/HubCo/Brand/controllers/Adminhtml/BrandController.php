@@ -25,6 +25,7 @@ class HubCo_Brand_Adminhtml_BrandController
      */
     public function editAction()
     {
+
         /**
          * Retrieve existing brand data if an ID was specified.
          * If not, we will have an empty brand entity ready to be populated.
@@ -54,7 +55,10 @@ class HubCo_Brand_Adminhtml_BrandController
                   }
                 }
                 $brand->addData($postData);
+
                 $brand->save();
+                Mage::dispatchEvent('save_brand_event', $brand);
+
 
                 $this->_getSession()->addSuccess(
                     $this->__('The brand has been saved.')
