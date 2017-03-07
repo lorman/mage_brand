@@ -55,7 +55,6 @@ class HubCo_Brand_Adminhtml_BrandController
                   }
                 }
                 $brand->addData($postData);
-
                 $brand->save();
                 Mage::dispatchEvent('save_brand_event', $brand);
 

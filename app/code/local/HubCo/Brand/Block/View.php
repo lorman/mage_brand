@@ -16,6 +16,8 @@ class HubCo_Brand_Block_View extends Mage_Core_Block_Template
         return Mage::getModel('catalog/product')->getCollection()
             ->addAttributeToSelect('name')
             ->addAttributeToFilter('brand_id', $brand->getId())
-            ->setOrder('name', 'ASC');
+            ->setOrder('name', 'ASC')
+            ->setPageSize(200)
+            ->setCurPage(1);
     }
 }
