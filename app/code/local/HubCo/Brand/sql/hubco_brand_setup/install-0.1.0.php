@@ -209,9 +209,16 @@ $table->addColumn(
 $table->setOption('type', 'InnoDB');
 $table->setOption('charset', 'utf8');
 
-/**
- * Create the table!
- */
-$this->getConnection()->createTable($table);
+
+if (!$this->getConnection ()->isTableExists ($this->getTable('hubco_brand/brand')  )) {
+  /**
+   * Create the table!
+   */
+  $this->getConnection()->createTable($table);
+}
+
+
+
+//$this->getConnection()->createTable($table);
 
 $this->endSetup();

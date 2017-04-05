@@ -218,26 +218,46 @@ class HubCo_Brand_Model_Brand
       ->getCollection()
       ->addFieldToSelect('entity_id')
       ->addFieldToSelect('name');
-      $allBrands = $allBrandsCollection->load()->toArray();
-      foreach ($allBrands['items'] as $brandId => $brand)
-      {
-        if (!isset($brand['name'])) {
-          continue;
-        }
-        if ($multi)
-        {
-          $brands[$brand['entity_id']] = array(
-              'value' => $brand['entity_id'],
-              'label' => $brand['name']
-          );
-        }
-        else
-        {
-          $brands[$brand['entity_id']] = $brand['name'];
-        }
-      }
+      $allBrandsCollection->setPageSize(100);
+      $pages = $allBrandsCollection->getLastPageNumber();
+      $currentPage = 1;
 
+      do {
+        $allBrandsCollection->setCurPage($currentPage);
+        $allBrandsCollection->load();
+        foreach ($allBrandsCollection as $brand)
+        {
+          $name = $brand->getName();
+          $entity_id = $brand->getId();
+          if (!isset($name)) {
+            continue;
+          }
+          if ($multi)
+          {
+            $brands[$entity_id] = array(
+                'value' => $entity_id,
+                'label' => $name
+            );
+          }
+          else
+          {
+            $brands[$entity_id] = $name;
+          }
+        }
+        $currentPage++;
+        $allBrandsCollection->clear();
+      } while ($currentPage <= $pages);
       return $brands;
+    }
+
+    public function toOptionArray()
+    {
+       return $this->getAvailableBrands(true);
+    }
+
+    public function toArray()
+    {
+      return $this->getAvailableBrands(false);
     }
 
     public function clean($brand) {

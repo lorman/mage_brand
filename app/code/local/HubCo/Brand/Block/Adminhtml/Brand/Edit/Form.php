@@ -85,6 +85,21 @@ class HubCo_Brand_Block_Adminhtml_Brand_Edit_Form
                 'required' => false,
                 'default' => 100
             ),
+            'add_handling' => array(
+                'label' => $this->__('Additional Handling'),
+                'input' => 'text',
+                'required' => false
+            ),
+            'surchargeS' => array(
+                'label' => $this->__('$ surcharge'),
+                'input' => 'text',
+                'required' => false
+            ),
+            'surchargeP' => array(
+                'label' => $this->__('% surcharge'),
+                'input' => 'text',
+                'required' => false
+            ),
             'google' => array(
                 'label' => $this->__('Google'),
                 'input' => 'select',
