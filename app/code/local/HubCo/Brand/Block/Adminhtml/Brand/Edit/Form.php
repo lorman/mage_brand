@@ -32,6 +32,10 @@ class HubCo_Brand_Block_Adminhtml_Brand_Edit_Form
             'hubco_brand/brand'
         );
 
+        $channelSingleton = Mage::getSingleton(
+            'hubco_channels/channel'
+        );
+
         // Add the fields that we want to be editable.
         $this->_addFieldsToFieldset($fieldset, array(
             'name' => array(
@@ -107,47 +111,12 @@ class HubCo_Brand_Block_Adminhtml_Brand_Edit_Form
                 'options' => $brandSingleton->getAvailablePermissions(),
                 'default' => $brandSingleton::PERMISSION_ALLOWED,
             ),
-            'amazon' => array(
-                'label' => $this->__('Amazon'),
-                'input' => 'select',
-                'required' => true,
-                'options' => $brandSingleton->getAvailablePermissions(),
-                'default' => $brandSingleton::PERMISSION_ALLOWED,
-            ),
-            'jet' => array(
-                'label' => $this->__('Jet'),
-                'input' => 'select',
-                'required' => true,
-                'options' => $brandSingleton->getAvailablePermissions(),
-                'default' => $brandSingleton::PERMISSION_ALLOWED,
-            ),
-            'ebay' => array(
-                'label' => $this->__('Ebay'),
-                'input' => 'select',
-                'required' => true,
-                'options' => $brandSingleton->getAvailablePermissions(),
-                'default' => $brandSingleton::PERMISSION_ALLOWED,
-            ),
-            'newegg' => array(
-                'label' => $this->__('NewEgg'),
-                'input' => 'select',
-                'required' => true,
-                'options' => $brandSingleton->getAvailablePermissions(),
-                'default' => $brandSingleton::PERMISSION_ALLOWED,
-            ),
-            'rakuten' => array(
-                'label' => $this->__('Rakuten'),
-                'input' => 'select',
-                'required' => true,
-                'options' => $brandSingleton->getAvailablePermissions(),
-                'default' => $brandSingleton::PERMISSION_ALLOWED,
-            ),
-            'sears' => array(
-                'label' => $this->__('Sears'),
-                'input' => 'select',
-                'required' => true,
-                'options' => $brandSingleton->getAvailablePermissions(),
-                'default' => $brandSingleton::PERMISSION_ALLOWED,
+            'channels' => array(
+                'name' => 'channels[]',
+                'label' => $this->__('Dis-Allowed Channels'),
+                'input' => 'multiselect',
+                'required' => false,
+                'values' => $channelSingleton->toOptionList(true),
             ),
             'product_types' => array(
                 'name' => 'product_types[]',

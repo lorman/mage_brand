@@ -13,7 +13,7 @@
             database is lower, it will attempt to run any setup scripts for
             the module and then update the database table to match this value.
             -->
-            <version>0.3.0</version>
+            <version>0.4.0</version>
         </HubCo_Brand>
     </modules>
     <global>

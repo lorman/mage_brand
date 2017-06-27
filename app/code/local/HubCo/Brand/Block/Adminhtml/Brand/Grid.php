@@ -34,7 +34,8 @@ class HubCo_Brand_Block_Adminhtml_Brand_Grid
     {
         /**
          * Here, we'll define which columns to display in the grid.
-         */
+        */
+
         $this->addColumn('entity_id', array(
             'header' => $this->_getHelper()->__('ID'),
             'type' => 'number',
@@ -95,11 +96,10 @@ class HubCo_Brand_Block_Adminhtml_Brand_Grid
             'options' => $brandSingleton->getAvailableVisibilies()
         ));
 
-        $this->addColumn('map', array(
-            'header' => $this->_getHelper()->__('MAP'),
-            'type' => 'options',
-            'index' => 'map',
-            'options' => $brandSingleton->getAvailableMAP()
+        $this->addColumn('max_discount', array(
+            'header' => $this->_getHelper()->__('MAX Discount'),
+            'type' => 'text',
+            'index' => 'max_discount',
         ));
 
         $this->addColumn('google', array(
@@ -109,11 +109,10 @@ class HubCo_Brand_Block_Adminhtml_Brand_Grid
             'options' =>  $brandSingleton->getAvailablePermissions()
         ));
 
-        $this->addColumn('amazon', array(
-            'header' => $this->_getHelper()->__('Amazon'),
-            'index' => 'amazon',
-            'type'    => 'options',
-            'options' =>  $brandSingleton->getAvailablePermissions()
+        $this->addColumn('channels', array(
+            'header' => $this->_getHelper()->__('Dis Allowed Channels'),
+            'index' => 'channels',
+            'type'    => 'text',
         ));
 
         $this->addColumn('image', array(
